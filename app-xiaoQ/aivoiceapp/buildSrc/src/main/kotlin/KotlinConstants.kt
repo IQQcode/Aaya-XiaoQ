@@ -68,11 +68,11 @@ object DependenciesConfig {
     const val RETROFIT = "com.squareup.retrofit2:retrofit:2.8.1"
     const val RETROFIT_GSON = "com.squareup.retrofit2:converter-gson:2.8.1"
 
-    //ViewPager
+    // ViewPager
     const val VIEWPAGER = "com.zhy:magic-viewpager:1.0.1"
     const val MATERIAL = "com.google.android.material:material:1.0.0"
 
-    //Lottie
+    // Lottie
     const val LOTTIE = "com.airbnb.android:lottie:3.4.0"
 
     //刷新

@@ -15,7 +15,7 @@ android {
     buildToolsVersion(AppConfig.buildToolsVersion)
     defaultConfig {
         if (ModuleConfig.isApp) {
-            applicationId = ModuleConfig.MODULE_WEATHER
+            applicationId = ModuleConfig.MODULE_CHAT
         }
         minSdkVersion(AppConfig.minSdkVersion)
         targetSdkVersion(AppConfig.targetSdkVersion)

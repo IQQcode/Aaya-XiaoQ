@@ -1,9 +1,11 @@
 package com.imooc.aivoiceapp
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.content.res.Resources
 import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -11,7 +13,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.view.WindowManager
+import android.view.animation.AnimationUtils.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_splash.*
 
 
 /**
@@ -22,13 +26,17 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class SplashActivity : Activity() {
 
+    @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // 隐藏标题栏
         // requestWindowFeature(Window.FEATURE_NO_TITLE);
         // 隐藏状态栏
-        // window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        );
 
         setContentView(R.layout.activity_splash)
 
@@ -36,11 +44,20 @@ class SplashActivity : Activity() {
         setStatusBarFullTransparent();
         setFitSystemWindow(false);
 
+        val topAnnotation = loadAnimation(this, R.anim.top_animation)
+        val bottomAnnotation = loadAnimation(this, R.anim.bottom_animation)
+
+        splashImageView.animation = topAnnotation
+        mAppTextLogo.animation = bottomAnnotation
+        mTextSlogan.animation = bottomAnnotation
+
+        // "fonts/english.ttf"  为assets下的相对路径
+        mAppTextLogo.typeface = Typeface.createFromAsset(assets, "bangers.ttf");
+
         // 模拟耗时操作
-        val handler = Handler()
-        // 模拟耗时操作
-        handler.postDelayed({
+        Handler().postDelayed({
             startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+            finish()
         }, 2000)
     }
 

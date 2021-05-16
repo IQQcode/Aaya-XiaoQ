@@ -5,7 +5,6 @@ import com.imooc.lib_base.base.BaseActivity
 import com.imooc.lib_base.helper.ARouterHelper
 import android.view.View
 import com.gcssloop.widget.ArcSeekBar
-import com.imooc.lib_voice.manager.VoiceManager
 import kotlinx.android.synthetic.main.activity_chat.*
 
 @Route(path = ARouterHelper.PATH_CHAT)
