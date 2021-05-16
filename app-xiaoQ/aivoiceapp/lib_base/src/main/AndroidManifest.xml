@@ -1,0 +1,65 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.imooc.lib_base">
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <uses-permission android:name="android.permission.DELETE_PACKAGES" />
+    <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES" />
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <!-- 这个权限用于进行网络定位 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- 这个权限用于访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <!-- 获取访问手机振动器权限，用于导航过程中的震动提示 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 获取摄像头权限，用于AR步行导航 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application>
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <meta-data
+            android:name="com.baidu.speech.APP_ID"
+            android:value="19389428" />
+
+        <meta-data
+            android:name="com.baidu.speech.API_KEY"
+            android:value="3HzYMWVyEuOuWWrExaCUEEKg" />
+
+        <meta-data
+            android:name="com.baidu.speech.SECRET_KEY"
+            android:value="q1zVsCEoD4lkchSanyESH7PcLN2GGOSF" />
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="GjMRtLQZO31StG5rD01Gwhwz9vGjUX6w" />
+
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
+
+        <service android:name=".service.InitService" />
+
+    </application>
+
+</manifest>

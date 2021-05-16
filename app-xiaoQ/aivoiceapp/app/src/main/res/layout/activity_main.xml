@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#26262a"
+    android:clipChildren="false"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context=".MainActivity">
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/mViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_weight="1"
+        android:layout_marginEnd="50dp"
+        android:clipChildren="false" />
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_height="120dp">-->
+
+
+<!--        &lt;!&ndash;Lottie动画&ndash;&gt;-->
+<!--        <com.airbnb.lottie.LottieAnimationView-->
+<!--            android:id="@+id/mLottieViewLeft"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="120dp"-->
+<!--            app:lottie_loop="true"-->
+<!--            android:rotation="180"-->
+<!--            android:layout_weight="1"-->
+<!--            app:lottie_rawRes="@raw/particle"-->
+<!--            app:lottie_speed="1" />-->
+
+<!--        <com.airbnb.lottie.LottieAnimationView-->
+<!--            android:id="@+id/mLottieViewRight"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="120dp"-->
+<!--            app:lottie_loop="true"-->
+<!--            android:layout_weight="1"-->
+<!--            app:lottie_rawRes="@raw/particle"-->
+<!--            app:lottie_speed="1" />-->
+
+<!--    </LinearLayout>-->
+
+    <!--    <com.carlos.voiceline.mylibrary.VoiceLineView-->
+    <!--        android:id="@id/mVoiceLine"-->
+    <!--        android:layout_width="fill_parent"-->
+    <!--        android:layout_height="88.0dip"-->
+    <!--        android:layout_marginTop="42.0dip"-->
+    <!--        voiceView:fineness="three"-->
+    <!--        voiceView:maxVolume="200.0"-->
+    <!--        voiceView:middleLine="@color/color_voice_line"-->
+    <!--        voiceView:middleLineHeight="1.0dip"-->
+    <!--        voiceView:rectSpace="2.0dip"-->
+    <!--        voiceView:rectWidth="5.0dip"-->
+    <!--        voiceView:sensibility="four"-->
+    <!--        voiceView:viewMode="line"-->
+    <!--        voiceView:voiceLine="@color/color_voice_line" />-->
+
+    <!--    <ImageView-->
+    <!--        android:layout_width="fill_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="42.0dip"-->
+    <!--        android:scaleType="center"-->
+    <!--        android:src="@drawable/img_main_line"-->
+    <!--        android:visibility="gone" />-->
+
+    <!--    <LinearLayout-->
+    <!--        android:layout_width="fill_parent"-->
+    <!--        android:layout_height="0.0dip"-->
+    <!--        android:layout_weight="1.0"-->
+    <!--        android:gravity="center"-->
+    <!--        android:orientation="vertical">-->
+
+    <!--        <ImageView-->
+    <!--            android:id="@id/ivMainVoice"-->
+    <!--            android:layout_width="65.0dip"-->
+    <!--            android:layout_height="65.0dip"-->
+    <!--            android:src="@drawable/img_main_bottom_icon" />-->
+    <!--    </LinearLayout>-->
+
+</LinearLayout>

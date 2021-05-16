@@ -1,0 +1,8 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.imooc.module_chat" >
+
+    <application>
+        <activity android:name=".ChatActivity"/>
+    </application>
+
+</manifest>

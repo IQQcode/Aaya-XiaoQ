@@ -1,0 +1,8 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.imooc.module_map">
+
+    <application>
+        <activity android:name=".MapActivity" />
+        <activity android:name=".ui.WNaviGuideActivity" />
+    </application>
+</manifest>
