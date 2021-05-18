@@ -1,97 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg"
+    android:background="#FFF"
+    android:orientation="vertical"
     tools:context=".ChatActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:text="ArcSeekBar"
-        android:textColor="#fff"
-        android:textSize="32sp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="30dp"
-        android:text="—— Powered by GcsSloop"
-        android:textColor="#fff"
-        android:textSize="16sp"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <FrameLayout
-        android:id="@+id/arc_seek_bar_wrap"
-        android:layout_width="280dp"
-        android:layout_height="280dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.gcssloop.widget.ArcSeekBar
-            android:id="@+id/mArcSeekBar"
-            android:layout_width="280dp"
-            android:layout_height="280dp"
-            app:arc_border_color="#fff"
-            app:arc_border_width="3dp"
-            app:arc_colors="@array/arc_colors_default"
-            app:arc_max="100"
-            app:arc_min="-20"
-            app:arc_open_angle="90"
-            app:arc_progress="-20"
-            app:arc_rotate_angle="90"
-            app:arc_shadow_radius="5dp"
-            app:arc_thumb_color="#fff"
-            app:arc_thumb_mode="STROKE"
-            app:arc_thumb_radius="16dp"
-            app:arc_thumb_shadow_color="#000000"
-            app:arc_thumb_shadow_radius="3dp"
-            app:arc_thumb_width="3dp"
-            app:arc_width="40dp" />
-    </FrameLayout>
-
-
-    <TextView
-        android:id="@+id/mProgressText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/layout_bg_color_bottom"
+        android:fontFamily="@font/poppins_medium"
         android:gravity="center"
-        android:text="Energy"
-        android:textColor="#fff"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/arc_seek_bar_wrap"
-        app:layout_constraintLeft_toLeftOf="@id/arc_seek_bar_wrap"
-        app:layout_constraintRight_toRightOf="@id/arc_seek_bar_wrap"
-        app:layout_constraintTop_toTopOf="@id/arc_seek_bar_wrap" />
+        android:text="小Q助手"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/mButton01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="设置 0"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ListView
+            android:id="@+id/mListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/rl_bottom"
+            android:background="@drawable/layout_bg_color_two"
+            android:cacheColorHint="@android:color/black"
+            android:divider="@null"
+            android:listSelector="@drawable/item_selector"
+            android:transcriptMode="alwaysScroll" />
 
-    <Button
-        android:id="@+id/mButton90"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="设置 90"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <RelativeLayout
+            android:id="@+id/rl_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:background="#b5f5ec">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <Button
+                android:id="@+id/mSendButton"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/btn_send_selector"
+                android:text="SEND"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <EditText
+                android:id="@+id/mEditTextInput"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/mSendButton"
+                android:background="@drawable/edit_text_round"
+                android:hint="📫Write a message"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
