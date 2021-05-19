@@ -1,5 +1,6 @@
 package com.imooc.module_setting
 
+import android.content.Intent
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.imooc.lib_base.base.BaseActivity
 import com.imooc.lib_base.helper.ARouterHelper
@@ -50,5 +51,10 @@ class SettingActivity : BaseActivity() {
 
         val version = packageManager.getPackageInfo(packageName, 0).versionName
         tvVersion.text = getString(R.string.text_version_ui, version)
+
+
+        mButton.setOnClickListener {
+            startActivity(Intent(this@SettingActivity, DashBoardActivity::class.java))
+        }
     }
 }

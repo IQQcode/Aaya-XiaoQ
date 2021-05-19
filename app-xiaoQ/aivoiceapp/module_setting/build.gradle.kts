@@ -8,6 +8,7 @@ plugins {
     kotlin("android")
     kotlin("android.extensions")
     kotlin("kapt")
+    id("kotlin-android")
 }
 
 android {
@@ -60,6 +61,8 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(project(":lib_base"))
+
+    implementation("com.google.android.material:material:1.0.0")
 
     //运行时注解
     kapt(DependenciesConfig.AROUTER_COMPILER)
