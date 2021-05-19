@@ -63,6 +63,9 @@ dependencies {
     implementation(project(":lib_base"))
 
     implementation("com.google.android.material:material:1.0.0")
+    implementation("androidx.appcompat:appcompat:1.2.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.0.1")
+    implementation("com.squareup.picasso:picasso:2.3.2")
 
     //运行时注解
     kapt(DependenciesConfig.AROUTER_COMPILER)

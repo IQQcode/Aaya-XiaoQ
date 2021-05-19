@@ -70,8 +70,8 @@ class MainActivity : BaseActivity() {
         initPagerView()
 
         // 底部动画初始化
-//        mLottieViewLeft.playAnimation()
-//        mLottieViewRight.playAnimation()
+        mLottieViewMainLeft.playAnimation()
+        mLottieViewMainRight.playAnimation()
 
         // 设置状态栏为全透明
         setStatusBarFullTransparent();

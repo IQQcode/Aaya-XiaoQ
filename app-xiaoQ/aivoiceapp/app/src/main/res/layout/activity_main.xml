@@ -19,33 +19,32 @@
         android:layout_marginEnd="50dp"
         android:clipChildren="false" />
 
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:layout_height="120dp">-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="120dp">
 
+        <!--Lottie动画-->
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/mLottieViewMainLeft"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            app:lottie_loop="true"
+            android:rotation="180"
+            android:layout_weight="1"
+            app:lottie_rawRes="@raw/particle"
+            app:lottie_speed="1" />
 
-<!--        &lt;!&ndash;Lottie动画&ndash;&gt;-->
-<!--        <com.airbnb.lottie.LottieAnimationView-->
-<!--            android:id="@+id/mLottieViewLeft"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="120dp"-->
-<!--            app:lottie_loop="true"-->
-<!--            android:rotation="180"-->
-<!--            android:layout_weight="1"-->
-<!--            app:lottie_rawRes="@raw/particle"-->
-<!--            app:lottie_speed="1" />-->
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/mLottieViewMainRight"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            app:lottie_loop="true"
+            android:layout_weight="1"
+            app:lottie_rawRes="@raw/particle"
+            app:lottie_speed="1" />
 
-<!--        <com.airbnb.lottie.LottieAnimationView-->
-<!--            android:id="@+id/mLottieViewRight"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="120dp"-->
-<!--            app:lottie_loop="true"-->
-<!--            android:layout_weight="1"-->
-<!--            app:lottie_rawRes="@raw/particle"-->
-<!--            app:lottie_speed="1" />-->
-
-<!--    </LinearLayout>-->
+    </LinearLayout>
 
     <!--    <com.carlos.voiceline.mylibrary.VoiceLineView-->
     <!--        android:id="@id/mVoiceLine"-->

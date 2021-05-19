@@ -3,6 +3,8 @@
     package="com.imooc.module_setting">
 
     <application>
+        <activity android:name=".WebPagerActivity"></activity>
+        <activity android:name=".NetViewActivity" />
         <activity android:name=".DashBoardActivity" />
         <activity android:name=".SettingActivity" />
     </application>

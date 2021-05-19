@@ -51,8 +51,13 @@ class VoiceService : Service(), OnNluResultListener {
     private val mHandler = Handler()
 
     private lateinit var mFullWindowView: View
+    private lateinit var mMainWindowView: View
+
     private lateinit var mChatListView: RecyclerView
     private lateinit var mLottieView: LottieAnimationView
+    private lateinit var mLottieViewMainLeft: LottieAnimationView
+    private lateinit var mLottieViewMainRight: LottieAnimationView
+
     private lateinit var tvVoiceTips: TextView
     private lateinit var ivCloseWindow: ImageView
     private val mList = ArrayList<ChatList>()
@@ -82,13 +87,16 @@ class VoiceService : Service(), OnNluResultListener {
     }
 
 
-    //初始化语音服务
+    // 初始化语音服务
     private fun initCoreVoiceService() {
 
         WindowHelper.initHelper(this)
         mFullWindowView = WindowHelper.getView(R.layout.layout_window_item)
+        mMainWindowView = WindowHelper.getView(R.layout.activity_main)
         mChatListView = mFullWindowView.findViewById<RecyclerView>(R.id.mChatListView)
         mLottieView = mFullWindowView.findViewById<LottieAnimationView>(R.id.mLottieView)
+        mLottieViewMainLeft = mMainWindowView.findViewById<LottieAnimationView>(R.id.mLottieViewMainLeft)
+        mLottieViewMainRight = mMainWindowView.findViewById<LottieAnimationView>(R.id.mLottieViewMainRight)
         ivCloseWindow = mFullWindowView.findViewById<ImageView>(R.id.ivCloseWindow)
         tvVoiceTips = mFullWindowView.findViewById<TextView>(R.id.tvVoiceTips)
         mChatListView.layoutManager = LinearLayoutManager(this)
@@ -202,6 +210,8 @@ class VoiceService : Service(), OnNluResultListener {
         mHandler.postDelayed({
             WindowHelper.hide(mFullWindowView)
             mLottieView.pauseAnimation()
+            mLottieViewMainLeft.pauseAnimation()
+            mLottieViewMainRight.pauseAnimation()
             SoundPoolHelper.play(R.raw.record_over)
         }, 2 * 1000)
     }
@@ -211,6 +221,8 @@ class VoiceService : Service(), OnNluResultListener {
         L.i("======隐藏窗口======")
         WindowHelper.hide(mFullWindowView)
         mLottieView.pauseAnimation()
+        mLottieViewMainLeft.pauseAnimation()
+        mLottieViewMainRight.pauseAnimation()
         SoundPoolHelper.play(R.raw.record_over)
         VoiceManager.stopAsr()
     }

@@ -1,9 +1,7 @@
 package com.imooc.module_setting
 
 import android.content.Intent
-import com.alibaba.android.arouter.facade.annotation.Route
 import com.imooc.lib_base.base.BaseActivity
-import com.imooc.lib_base.helper.ARouterHelper
 import com.imooc.lib_base.utils.SpUtils
 import kotlinx.android.synthetic.main.activity_setting.*
 
@@ -13,7 +11,6 @@ import kotlinx.android.synthetic.main.activity_setting.*
  * Founder: LiuGuiLin
  * Profile:
  */
-@Route(path = ARouterHelper.PATH_SETTING)
 class SettingActivity : BaseActivity() {
 
     override fun getLayoutId(): Int {
@@ -54,7 +51,7 @@ class SettingActivity : BaseActivity() {
 
 
         mButton.setOnClickListener {
-            startActivity(Intent(this@SettingActivity, DashBoardActivity::class.java))
+            startActivity(Intent(this@SettingActivity, NetViewActivity::class.java))
         }
     }
 }

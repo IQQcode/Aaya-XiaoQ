@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>WebView Test</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+</head>
+
+<script type="text/javascript">
+
+    function() {
+        var objects = document.getElementsByTagName("img"); +
+        var head = objects[0].src;
+        var ans = document.getElementsByClassName("lazy");
+        var arr = [];
+        arr[0] = head;
+        // 将图片及放入到数组
+        for (var i = 1; i < ans.length; i++) {
+            arr[i] = ans[i - 1].getAttribute('data-original');
+        }
+        // 添加图片的点击事件
+        for (var i = 0; i < ans.length; i++) {
+            // 点击每个图片调用Android中的函数
+            ans[i].onclick = function () {
+                window.listener.openImage(this.getAttribute('data-original'), arr);
+            }
+        }
+        objects[0].onclick = function () {
+            window.listener.openImage(this.src, arr);
+        }
+    }
+
+</script>
+
+<body>
+    <h1 align="center">WebView使用基础</h1>
+</body>
+
+</html>
