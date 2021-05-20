@@ -3,7 +3,14 @@
     package="com.imooc.module_setting">
 
     <application>
-        <activity android:name=".WebPagerActivity"></activity>
+        <activity android:name=".views.ZhihuActivity"/>
+        <activity android:name=".views.JuejinActivity"/>
+        <activity android:name=".views.AndroidOfficialActivity"/>
+        <activity android:name=".views.NotesActivity"/>
+        <activity android:name=".views.AboutMeActivity"/>
+        <activity android:name=".views.CsdnActivity"/>
+        <activity android:name=".views.InformationActivity"/>
+        <activity android:name=".WebPagerActivity" />
         <activity android:name=".NetViewActivity" />
         <activity android:name=".DashBoardActivity" />
         <activity android:name=".SettingActivity" />

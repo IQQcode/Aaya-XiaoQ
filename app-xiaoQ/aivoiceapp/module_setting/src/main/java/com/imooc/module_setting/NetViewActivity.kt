@@ -4,10 +4,11 @@ import android.annotation.TargetApi
 import android.app.Activity
 import android.os.Build
 import android.os.Bundle
-import android.webkit.WebChromeClient
-import android.webkit.WebResourceRequest
-import android.webkit.WebView
-import android.webkit.WebViewClient
+import android.util.Log
+import android.view.View
+import android.webkit.*
+import android.widget.Toast
+import com.imooc.module_setting.netweb.CustomWebView
 import com.imooc.module_setting.netweb.NetJavaScriptInterface
 import kotlinx.android.synthetic.main.activity_netview.*
 
@@ -18,26 +19,35 @@ import kotlinx.android.synthetic.main.activity_netview.*
  */
 class NetViewActivity : Activity() {
 
-    // private val url: String = "http://www.moviebase.cn/uread/app/viewArt/viewArt-0985242225a84c7eabe3eb62c9fa91bf.html?appVersion=1.7.0&osType=null&platform=2"
+    private val url: String = "http://www.moviebase.cn/uread/app/viewArt/viewArt-0985242225a84c7eabe3eb62c9fa91bf.html?appVersion=1.7.0&osType=null&platform=2"
 
-    private val url: String = "https://zhuanlan.zhihu.com/p/58691238"
+    // private val url: String = "https://zhuanlan.zhihu.com/p/58691238"
+
+    private var exitTime: Long = 0
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_netview)
 
+
         // 设置WebView的信息配置
-        val setting = mWebView.settings
+        val setting = mCustomWebView!!.settings
+        setting.useWideViewPort = true //设定支持viewport
+        setting.loadWithOverviewMode = true //自适应屏幕
+        setting.builtInZoomControls = true
+        setting.displayZoomControls = false
+        setting.setSupportZoom(true) //设定支持缩放
         setting.javaScriptEnabled = true // 允许加载JS
         setting.allowFileAccess = true // 允许访问文件
         setting.allowFileAccessFromFileURLs = true // 允许访问URL中的资源
         setting.javaScriptCanOpenWindowsAutomatically = true;
+        val cookieManager = CookieManager.getInstance()
 
         // 加载网页信息
-        mWebView.loadUrl(url)
+        mCustomWebView.loadUrl(url)
 
-        mWebView.webViewClient = object : WebViewClient() {
+        mCustomWebView.webViewClient = object : WebViewClient() {
 
             /**
              * 默认的URL是加载到本地默认的浏览器打开，要设置成本地客户端打开
@@ -49,6 +59,7 @@ class NetViewActivity : Activity() {
                 view: WebView,
                 request: WebResourceRequest?
             ): Boolean {
+                // 在WebView里打开新链接
                 view.loadUrl(url)
                 return false
             }
@@ -60,17 +71,49 @@ class NetViewActivity : Activity() {
              */
             override fun onPageFinished(view: WebView, url: String?) {
                 super.onPageFinished(view, url)
-                // 监听WebView的网页加载完成，添加图片的的监听
-                // 监听webview已经将网页加载完成了，添加图片的监听
+                // 监听WebView已经将网页加载完成了，添加图片的监听
                 addImageClickListener(view)
+                //获取屏幕高度，另外因为网页可能进行缩放了，所以需要乘以缩放比例得出的才是实际的尺寸
+                val cookieManager = CookieManager.getInstance()
+                val CookieStr = cookieManager.getCookie(url)
+                Log.e("Web", "Cookies = $CookieStr")
             }
         }
 
         // 设置JS处理
-        mWebView.webChromeClient = WebChromeClient()
+        mCustomWebView.webChromeClient = WebChromeClient()
 
         // JS中调用了Android代码，需要设置通道
-        mWebView.addJavascriptInterface(NetJavaScriptInterface(this), "listener")
+        mCustomWebView.addJavascriptInterface(NetJavaScriptInterface(this), "listener")
+
+        //比如这里做一个简单的判断，当页面发生滚动，显示那个Button
+        mCustomWebView!!.onScrollChangedCallback = object : CustomWebView.OnScrollChangedCallback {
+            override fun onScroll(dx: Int, dy: Int) {
+                if (dy > 0) {
+                    mImageViewToTop!!.visibility = View.VISIBLE
+                } else {
+                    mImageViewToTop!!.visibility = View.GONE
+                }
+            }
+        }
+
+        mImageViewToTop!!.setOnClickListener {
+            mCustomWebView!!.scrollY = 0
+            mImageViewToTop!!.visibility = View.GONE
+        }
+    }
+
+    override fun onBackPressed() {
+        if (mCustomWebView!!.canGoBack()) {
+            mCustomWebView!!.goBack()
+        } else {
+            if (System.currentTimeMillis() - exitTime > 2000) {
+                Toast.makeText(applicationContext, "再按一次退出程序", Toast.LENGTH_SHORT).show()
+                exitTime = System.currentTimeMillis()
+            } else {
+                finish()
+            }
+        }
     }
 
 

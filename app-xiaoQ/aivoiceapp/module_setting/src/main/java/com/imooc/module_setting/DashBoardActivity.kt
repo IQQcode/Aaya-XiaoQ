@@ -11,6 +11,7 @@ import com.imooc.lib_base.helper.ARouterHelper
 import com.imooc.module_setting.adapter.DashBoardAdapter
 import com.imooc.module_setting.bean.ItemBean
 import com.imooc.module_setting.listener.OnItemClickListener
+import com.imooc.module_setting.views.*
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -45,13 +46,13 @@ class DashBoardActivity : Activity() {
 
                 when (position) {
                     0 -> startActivity(Intent(this@DashBoardActivity, SettingActivity::class.java))
-                    1 -> startActivity(Intent(this@DashBoardActivity, SettingActivity::class.java))
-                    2 -> startActivity(Intent(this@DashBoardActivity, SettingActivity::class.java))
-                    3 -> startActivity(Intent(this@DashBoardActivity, SettingActivity::class.java))
-                    4 -> startActivity(Intent(this@DashBoardActivity, SettingActivity::class.java))
-                    5 -> startActivity(Intent(this@DashBoardActivity, SettingActivity::class.java))
-                    6 -> startActivity(Intent(this@DashBoardActivity, SettingActivity::class.java))
-                    7 -> startActivity(Intent(this@DashBoardActivity, SettingActivity::class.java))
+                    1 -> startActivity(Intent(this@DashBoardActivity, AboutMeActivity::class.java))
+                    2 -> startActivity(Intent(this@DashBoardActivity, InformationActivity::class.java))
+                    3 -> startActivity(Intent(this@DashBoardActivity, NotesActivity::class.java))
+                    4 -> startActivity(Intent(this@DashBoardActivity, AndroidOfficialActivity::class.java))
+                    5 -> startActivity(Intent(this@DashBoardActivity, ZhihuActivity::class.java))
+                    6 -> startActivity(Intent(this@DashBoardActivity, CsdnActivity::class.java))
+                    7 -> startActivity(Intent(this@DashBoardActivity, JuejinActivity::class.java))
                 }
             }
 

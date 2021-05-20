@@ -13,6 +13,13 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".views.ZhihuActivity"/>
+        <activity android:name=".views.JuejinActivity"/>
+        <activity android:name=".views.AndroidOfficialActivity"/>
+        <activity android:name=".views.NotesActivity"/>
+        <activity android:name=".views.AboutMeActivity"/>
+        <activity android:name=".views.CsdnActivity"/>
+        <activity android:name=".views.InformationActivity"/>
         <activity android:name=".NetViewActivity"/>
         <activity android:name=".SettingActivity" />
         <activity android:name=".WebPagerActivity"/>

@@ -99,7 +99,7 @@ class ChatActivity : BaseActivity() {
             val okHttpClient = OkHttpClient()
             // [图林机器人] Request request = new Request.Builder().url(WEB_SITE + "?key=" + KEY + "&info=" + sendMsg).build();
             val request = Request.Builder().url(WEB_SITE + sendMsg).build()
-            Log.i("TAG", "Get请求的数据为: $request")
+            Log.i("CHAT", "Get请求的数据为: $request")
             val call = okHttpClient.newCall(request)
             // 开启异步线程访问网络
             call.enqueue(object : Callback {
