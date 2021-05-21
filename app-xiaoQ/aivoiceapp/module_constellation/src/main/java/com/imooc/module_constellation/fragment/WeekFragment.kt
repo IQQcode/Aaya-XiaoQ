@@ -30,8 +30,7 @@ class WeekFragment(val name: String) : BaseFragment() {
     private fun loadWeekData() {
         HttpManager.queryWeekConsTellInfo(name, object : Callback<WeekData> {
             override fun onFailure(call: Call<WeekData>, t: Throwable) {
-                Toast.makeText(activity, getString(R.string.text_load_fail), Toast.LENGTH_LONG)
-                    .show()
+                Toast.makeText(activity, getString(R.string.text_load_fail), Toast.LENGTH_LONG).show()
             }
 
             override fun onResponse(call: Call<WeekData>, response: Response<WeekData>) {

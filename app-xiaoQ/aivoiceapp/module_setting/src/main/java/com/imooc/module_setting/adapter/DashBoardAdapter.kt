@@ -63,12 +63,6 @@ class DashBoardAdapter(mListData: List<ItemBean>, mContext: Context) :
         return mListData.size
     }
 
-    /**
-     * 重载点击事件，指定点击事件时执行自定义的onItemClick
-     * @param view View
-     */
-
-
     override fun getItemId(position: Int): Long {
         return position.toLong()
     }
@@ -87,5 +81,4 @@ class DashBoardAdapter(mListData: List<ItemBean>, mContext: Context) :
             }
         }
     }
-
 }

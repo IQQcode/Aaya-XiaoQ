@@ -166,6 +166,7 @@ object VoiceEngineAnalyze {
                         mOnNluResultListener.nluError()
                     }
                 }
+                // 星座
                 NluWords.NLU_CONSTELL -> {
                     val consTellNameArray = slots.optJSONArray("user_constell_name")
                     consTellNameArray?.let { consTell ->
@@ -184,6 +185,7 @@ object VoiceEngineAnalyze {
                         }
                     }
                 }
+                // 天气
                 NluWords.NLU_WEATHER -> {
                     val userLoc = slots.optJSONArray("user_loc")
                     userLoc?.let { loc ->

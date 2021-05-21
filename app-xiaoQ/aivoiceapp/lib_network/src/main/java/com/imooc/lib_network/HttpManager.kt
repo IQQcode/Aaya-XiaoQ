@@ -61,7 +61,7 @@ object HttpManager {
 
     //============================星座============================
 
-    //星座对象
+    // 星座对象
     private val retrofitConsTell by lazy {
         Retrofit.Builder()
             .client(getClient())
@@ -70,33 +70,33 @@ object HttpManager {
             .build()
     }
 
-    //星座接口对象
+    // 星座接口对象
     private val apiConsTell by lazy {
         retrofitConsTell.create(HttpImplService::class.java)
     }
 
-    //查询今天星座详情
+    // 查询今天星座详情
     fun queryTodayConsTellInfo(name: String, callback: Callback<TodayData>) {
         apiConsTell.queryTodayConsTellInfo(name, "today", HttpKey.CONS_TELL_KEY).enqueue(callback)
     }
 
-    //查询明天星座详情
+    // 查询明天星座详情
     fun queryTomorrowConsTellInfo(name: String, callback: Callback<TodayData>) {
         apiConsTell.queryTodayConsTellInfo(name, "tomorrow", HttpKey.CONS_TELL_KEY)
             .enqueue(callback)
     }
 
-    //查询本周星座详情
+    // 查询本周星座详情
     fun queryWeekConsTellInfo(name: String, callback: Callback<WeekData>) {
         apiConsTell.queryWeekConsTellInfo(name, "week", HttpKey.CONS_TELL_KEY).enqueue(callback)
     }
 
-    //查询本月星座详情
+    // 查询本月星座详情
     fun queryMonthConsTellInfo(name: String, callback: Callback<MonthData>) {
         apiConsTell.queryMonthConsTellInfo(name, "month", HttpKey.CONS_TELL_KEY).enqueue(callback)
     }
 
-    //查询今年星座详情
+    // 查询今年星座详情
     fun queryYearConsTellInfo(name: String, callback: Callback<YearData>) {
         apiConsTell.queryYearConsTellInfo(name, "year", HttpKey.CONS_TELL_KEY).enqueue(callback)
     }
@@ -105,7 +105,7 @@ object HttpManager {
 
     //============================机器人============================
 
-    //星座对象
+    // 语音应答对象
     private val retrofitAiRobot by lazy {
         Retrofit.Builder()
             .client(getClient())
@@ -114,12 +114,12 @@ object HttpManager {
             .build()
     }
 
-    //星座接口对象
+    // 语音应答接口对象
     private val apiRobot by lazy {
         retrofitAiRobot.create(HttpImplService::class.java)
     }
 
-    //机器人对话
+    // 机器人对话
     fun aiRobotChat(text: String, callback: Callback<RobotData>) {
         val jsonObject = JSONObject()
         jsonObject.put("reqType", 0)

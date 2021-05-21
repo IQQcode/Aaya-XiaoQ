@@ -20,10 +20,11 @@ import kotlinx.android.synthetic.main.activity_constellation.*
 /**
  * FileName: ConstellationActivity
  * Founder: LiuGuiLin
- * Profile: 星座
+ * Profile: 星座详情
+ * TODO: 好运拉满100%
  */
 
-@Route(path = ARouterHelper.PATH_CONSTELLATION)
+@Route(path = ARouterHelper.PATH_CONSTELLATION_DETAIL)
 class ConstellationActivity : BaseActivity() {
 
     private lateinit var mTodayFragment: ToDayFragment
@@ -47,23 +48,30 @@ class ConstellationActivity : BaseActivity() {
     }
 
     override fun initView() {
+
+        // 请求的星座名称
         val name = intent.getStringExtra("name")
+
         if (!TextUtils.isEmpty(name)) {
-            //语音进来的
+            // 语音问答进来的
             name?.let { initFragment(it) }
         } else {
-            //主页进来的,读取历史
-            val consTellName = SpUtils.getString("consTell")
-            consTellName?.let {
+            // 主页[星座Pager] "点" 进来的, 读取历史(默认射手座)
+                // TODO: 开篇UI优化
+//            val consTellName = SpUtils.getString("consTell")
+
+            val consItemName = intent.getStringExtra("constellation_name")
+
+            consItemName?.let {
                 if (!TextUtils.isEmpty(it)) {
                     initFragment(it)
                 } else {
-                    initFragment(getString(R.string.text_def_con_tell))
+                    consItemName?.let { it1 -> initFragment(it1) }
                 }
             }
         }
 
-        //View控制
+        // View控制
         mTvToday.setOnClickListener {
             checkTab(true, 0)
         }
@@ -81,12 +89,15 @@ class ConstellationActivity : BaseActivity() {
         }
     }
 
-    //ViewPage + Fragment 实现滑动切换页面
+    /**
+     * ViewPage + Fragment 实现滑动切换页面
+     * @param name String
+     */
     private fun initFragment(name: String) {
 
         SpUtils.putString("consTell", name)
 
-        //设置标题
+        // 设置标题
         supportActionBar?.title = name
 
         mTodayFragment = ToDayFragment(true, name)
@@ -101,24 +112,26 @@ class ConstellationActivity : BaseActivity() {
         mListFragment.add(mMonthFragment)
         mListFragment.add(mYearFragment)
 
-        //初始化页面
+
         initViewPager()
     }
 
+    // 初始化页面
     private fun initViewPager() {
         mViewPager.adapter = PageFragmentAdapter(supportFragmentManager)
+        // 预加载偏移量
         mViewPager.offscreenPageLimit = mListFragment.size
+
+        // 监听滑动事件
         mViewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
-            override fun onPageScrollStateChanged(state: Int) {
-            }
+
+            override fun onPageScrollStateChanged(state: Int) { }
 
             override fun onPageScrolled(
                 position: Int,
                 positionOffset: Float,
                 positionOffsetPixels: Int
-            ) {
-
-            }
+            ) { }
 
             override fun onPageSelected(position: Int) {
                 checkTab(false, position)
@@ -126,11 +139,14 @@ class ConstellationActivity : BaseActivity() {
 
         })
 
-        //等待全部初始化之后采取做UI控制操作
+        // 等待全部初始化之后采取做UI控制操作
         checkTab(false, 0)
     }
 
-    //适配器
+    /**
+     * 适配器
+     * @constructor
+     */
     inner class PageFragmentAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
 
         override fun getItem(position: Int): Fragment {
@@ -142,12 +158,14 @@ class ConstellationActivity : BaseActivity() {
         }
     }
 
-    //切换选项卡
+    /**
+     * 切换选项卡
+     * @param isClick Boolean 是否是点击，点击才切换
+     * @param index Int
+     */
     private fun checkTab(isClick: Boolean, index: Int) {
 
-        if (isClick) {
-            mViewPager.currentItem = index
-        }
+        if (isClick) mViewPager.currentItem = index
 
         mTvToday.setTextColor(if (index == 0) Color.RED else Color.BLACK)
         mTvTomorrow.setTextColor(if (index == 1) Color.RED else Color.BLACK)

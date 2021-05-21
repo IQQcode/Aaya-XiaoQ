@@ -21,6 +21,11 @@ object ConsTellHelper {
         mTimeArray = mContext.resources.getStringArray(R.array.ConstellTimeArray)
     }
 
+    /**
+     * 根据星座名称匹配星座时间
+     * @param consTellName String 传递进来的星座名称
+     * @return String
+     */
     fun getConsTellTime(consTellName: String): String {
         mNameArray.forEachIndexed { index, s ->
             if (s == consTellName) {

@@ -50,7 +50,6 @@ class YearFragment(val name: String) : BaseFragment() {
                     tvFinance.text = it.finance[0]
                 }
             }
-
         })
     }
 }

@@ -290,14 +290,14 @@ class VoiceService : Service(), OnNluResultListener {
         hideWindow()
     }
 
-    //音量-
+    // 音量-
     override fun setVolumeDown() {
         addAiText(getString(R.string.text_voice_volume_sub))
         CommonSettingHelper.setVolumeDown()
         hideWindow()
     }
 
-    //退下
+    // 退下
     override fun quit() {
         addAiText(WordsTools.quitWords(), object : VoiceTTS.OnTTSResultListener {
             override fun ttsEnd() {
@@ -307,18 +307,25 @@ class VoiceService : Service(), OnNluResultListener {
         })
     }
 
-    //星座时间
+    /**
+     * 星座时间
+     * @param name String
+     */
     override fun conTellTime(name: String) {
         L.i("conTellTime:$name")
         val text = ConsTellHelper.getConsTellTime(name)
         addAiText(text, object : VoiceTTS.OnTTSResultListener {
+            // 播放完成后隐藏窗口
             override fun ttsEnd() {
                 hideWindow()
             }
         })
     }
 
-    //星座详情
+    /**
+     * 星座详情
+     * @param name String
+     */
     override fun conTellInfo(name: String) {
         L.i("conTellInfo:$name")
         addAiText(
@@ -328,10 +335,11 @@ class VoiceService : Service(), OnNluResultListener {
                     hideWindow()
                 }
             })
-        ARouterHelper.startActivity(ARouterHelper.PATH_CONSTELLATION, "name", name)
+        // 跳转到该星座的详情页
+        ARouterHelper.startActivity(ARouterHelper.PATH_CONSTELLATION_DETAIL, "name", name)
     }
 
-    //拨打联系人
+    // 拨打联系人
     override fun callPhoneForName(name: String) {
         val list = ContactHelper.mContactList.filter { it.phoneName == name }
         if (list.isNotEmpty()) {

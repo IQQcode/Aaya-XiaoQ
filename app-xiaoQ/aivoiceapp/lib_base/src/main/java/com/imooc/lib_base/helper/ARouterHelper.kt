@@ -14,9 +14,10 @@ import com.imooc.lib_base.BuildConfig
  */
 object ARouterHelper {
 
-    //Module First Run Path
+    // Module First Run Path
     const val PATH_APP_MANAGER = "/app_manager/app_manager_activity"
     const val PATH_CONSTELLATION = "/constellation/constellation_activity"
+    const val PATH_CONSTELLATION_DETAIL = "/constellation/constellation_activity_details"
     const val PATH_DEVELOPER = "/developer/developer_activity"
     const val PATH_JOKE = "/joke/joke_activity"
     const val PATH_MAP = "/map/map_activity"
@@ -26,7 +27,7 @@ object ARouterHelper {
     const val PATH_WEATHER = "/weather/weather_activity"
     const val PATH_CHAT = "/chat/chat_activity"
 
-    //初始化
+    // 初始化
     fun initHelper(application: Application) {
         if (BuildConfig.DEBUG) {
             ARouter.openLog()

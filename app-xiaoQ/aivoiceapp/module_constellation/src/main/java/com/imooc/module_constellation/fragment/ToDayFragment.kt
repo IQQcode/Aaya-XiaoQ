@@ -17,8 +17,7 @@ import retrofit2.Response
  * Founder: LiuGuiLin
  * Profile: 今天/明天 星座运势
  */
-class ToDayFragment(private val isToday: Boolean, val name: String) : BaseFragment(),
-    Callback<TodayData> {
+class ToDayFragment(private val isToday: Boolean, val name: String) : BaseFragment(), Callback<TodayData> {
 
     override fun getLayoutId(): Int {
         return R.layout.fragment_today
@@ -32,12 +31,12 @@ class ToDayFragment(private val isToday: Boolean, val name: String) : BaseFragme
         }
     }
 
-    //加载今天的数据
+    // 加载今天的数据
     private fun loadToday() {
         HttpManager.queryTodayConsTellInfo(name, this)
     }
 
-    //加载明天的数据
+    // 加载明天的数据
     private fun loadTomorrow() {
         HttpManager.queryTomorrowConsTellInfo(name, this)
     }
@@ -59,11 +58,11 @@ class ToDayFragment(private val isToday: Boolean, val name: String) : BaseFragme
             tvColor.text = getString(R.string.text_con_tell_color, it.color)
             tvSummary.text = getString(R.string.text_con_tell_desc, it.summary)
 
-            //pbAll.progress = it.all.substring(0, it.all.length - 1).toInt()
-            //pbHealth.progress = it.health.substring(0, it.health.length - 1).toInt()
-            //pbLove.progress = it.love.substring(0, it.love.length - 1).toInt()
-            //pbMoney.progress = it.money.substring(0, it.money.length - 1).toInt()
-            //pbWork.progress = it.work.substring(0, it.work.length - 1).toInt()
+            // pbAll.progress = it.all.substring(0, it.all.length - 1).toInt() // 字符串切分
+            // pbHealth.progress = it.health.substring(0, it.health.length - 1).toInt()
+            // pbLove.progress = it.love.substring(0, it.love.length - 1).toInt()
+            // pbMoney.progress = it.money.substring(0, it.money.length - 1).toInt()
+            // pbWork.progress = it.work.substring(0, it.work.length - 1).toInt()
 
             pbAll.progress = it.all
             pbHealth.progress = it.health
