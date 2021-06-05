@@ -7,8 +7,8 @@ plugins {
 }
 //Android属性
 android {
-    compileSdkVersion(30)
-    buildToolsVersion("30.0.3")
+    compileSdkVersion(AppConfig.compileSdkVersion)
+    buildToolsVersion(AppConfig.buildToolsVersion)
     defaultConfig {
         applicationId = AppConfig.applicationId
         minSdkVersion(AppConfig.minSdkVersion)

@@ -33,7 +33,7 @@ open class BaseApp : Application() {
     private fun initApp() {
         ARouterHelper.initHelper(this)
         NotificationHelper.initHelper(this)
-        MapManager.initMap(this)
+        MapManager.initMap(this) // 初始化地图
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             startForegroundService(Intent(this, InitService::class.java))

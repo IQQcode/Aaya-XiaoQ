@@ -8,15 +8,17 @@ package com.imooc.lib_network.http
  */
 object HttpKey {
 
-    //天气
-    const val WEATHER_KEY = "4ea58de8a7573377cec0046f5e2469d5"
+    // 天气
+    const val WEATHER_KEY = "ce0c812bb559ab1988d74457e9783092"
 
-    //笑话
-    const val JOKE_KEY = "56e5f85c150ebd54461ae4fb7c6705ec"
+    // 笑话
+    const val JOKE_KEY = "b45fd2d60832a7ab31cb9711677942d0"
 
-    //星座
-    const val CONS_TELL_KEY = "6e2ea627829463a7991aee4790163752"
+    // 星座
+    const val CONS_TELL_KEY = "a9121436c033c4410b9783ad26b28b91"
 
-    //机器人
-    const val ROBOT_KEY = "11d4b51311d04d57aed1151e51e830df"
+    // 图灵机器人
+    const val ROBOT_KEY = "d973de691aec459ea55a5657dda8c25b"
+
+    // const val ROBOT_KEY = "11d4b51311d04d57aed1151e51e830df" // 之前默认的
 }

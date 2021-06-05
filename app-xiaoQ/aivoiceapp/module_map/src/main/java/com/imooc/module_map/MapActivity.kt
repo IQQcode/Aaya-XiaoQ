@@ -26,14 +26,14 @@ import kotlinx.android.synthetic.main.activity_map.*
 
 
 /**
- * FileName: MapActivity
- * Founder: LiuGuiLin
- * Profile: 地图
+ * @Author: iqqcode
+ * @Date: 2021-04-28 12:45
+ * @Description:地图SDK
  */
 @Route(path = ARouterHelper.PATH_MAP)
 class MapActivity : BaseActivity() {
 
-    //权限
+    // 定位权限
     private val permission = arrayOf(
         Manifest.permission.ACCESS_COARSE_LOCATION,
         Manifest.permission.ACCESS_FINE_LOCATION
@@ -55,24 +55,25 @@ class MapActivity : BaseActivity() {
 
     override fun initView() {
 
+        // 绑定百度地图
         MapManager.bindMapView(mMapView)
 
         initPoiList()
 
-        //判断
-        //动态权限
+        // 判断
+        // 动态权限
         if (checkPermission(permission)) {
-            //Option
+            // Option
             startLocation()
         } else {
             requestPermission(permission,
                 Action<List<String>> {
-                    //Option
+                    // Option
                     startLocation()
                 })
         }
 
-        //监听输入事件
+        // 监听输入事件
         etSearchPoi.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 s?.let {
@@ -104,7 +105,7 @@ class MapActivity : BaseActivity() {
     private val mList = ArrayList<PoiInfo>()
     private lateinit var mPoiAdapter: CommonAdapter<PoiInfo>
 
-    //初始化列表
+    // 初始化列表
     private fun initPoiList() {
         ryPoiView.layoutManager = LinearLayoutManager(this)
         ryPoiView.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
@@ -132,7 +133,7 @@ class MapActivity : BaseActivity() {
         ryPoiView.adapter = mPoiAdapter
     }
 
-    //搜索
+    // 搜索
     private fun poiSearch(poi: String) {
         MapManager.poiSearch(poi, "", 3, object : MapManager.OnPoiResultListener {
             override fun result(result: PoiResult) {
@@ -146,7 +147,7 @@ class MapActivity : BaseActivity() {
         })
     }
 
-    //开启定位
+    // 开启定位
     private fun startLocation() {
         //获取关键字
         val keyword = intent.getStringExtra("keyword")
@@ -157,7 +158,7 @@ class MapActivity : BaseActivity() {
         }
     }
 
-    //路线规划
+    // 路线规划
     private fun route(address: String) {
         L.i("开始路线规划")
         MapManager.startLocationWalkingSearch(address, object : MapManager.OnNaviResultListener {
@@ -186,11 +187,10 @@ class MapActivity : BaseActivity() {
                         })
                 }, 5 * 1000)
             }
-
         })
     }
 
-    //显示自身的位置
+    // 显示自身的位置
     private fun showMyLocation() {
         MapManager.setLocationSwitch(true, object : MapManager.OnLocationResultListener {
             override fun result(
@@ -214,7 +214,7 @@ class MapActivity : BaseActivity() {
         })
     }
 
-    //查找周边POI
+    // 查找周边POI
     private fun searchNearByPoi(keyword: String) {
         L.i("searchNearByPoi$keyword")
         MapManager.setLocationSwitch(true, object : MapManager.OnLocationResultListener {
@@ -234,7 +234,7 @@ class MapActivity : BaseActivity() {
                     10,
                     object : MapManager.OnPoiResultListener {
                         override fun result(result: PoiResult) {
-                            //在UI上绘制视图
+                            // 在UI上绘制视图
                         }
                     })
                 L.i("定位成功：" + address + "desc:" + desc)

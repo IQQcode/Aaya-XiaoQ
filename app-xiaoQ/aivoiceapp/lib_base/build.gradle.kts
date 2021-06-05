@@ -71,7 +71,7 @@ dependencies {
     api(DependenciesConfig.ARC_SEEKBAR)
 
 
-    //引入Jar与AAR
+    // 引入百度地图SDK
     api(files("libs/BaiduLBS_Android.jar"))
     api(files("libs/IndoorscapeAlbumPlugin.jar"))
     

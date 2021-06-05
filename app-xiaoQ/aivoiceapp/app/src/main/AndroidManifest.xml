@@ -12,7 +12,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
 
-        <activity android:name=".MainActivity"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+
         <!-- 支持level 28以上编译 -->
         <uses-library
             android:name="org.apache.http.legacy"
@@ -27,7 +30,8 @@
         </activity>
 
         <service
-            android:name=".service.VoiceService" android:exported="true" />
+            android:name=".service.VoiceService"
+            android:exported="true" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

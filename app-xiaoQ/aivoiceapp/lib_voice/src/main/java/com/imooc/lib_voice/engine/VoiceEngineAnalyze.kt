@@ -35,10 +35,14 @@ object VoiceEngineAnalyze {
         }
     }
 
-    //处理单条结果
+    // 处理单条结果
     private fun analyzeNluSingle(result: JSONObject) {
+        // domain(领域)，是包含一系列的相关的意图和词槽组成的语义理解场景
         val domain = result.optString("domain")
+        // intent(意图)，是用户通过交互输入所要表达的目的
         val intent = result.optString("intent")
+        // slot(词槽)，是意图下用户附带的一些限制条件，由一个tag-value对组成
+        // tag即词槽标签，表示这个限制条件的类型；value即词槽值，表示这个限制条件的具体内容
         val slots = result.optJSONObject("slots")
 
         slots?.let {

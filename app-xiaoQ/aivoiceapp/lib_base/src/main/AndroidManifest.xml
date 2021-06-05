@@ -49,9 +49,10 @@
             android:name="com.baidu.speech.SECRET_KEY"
             android:value="q1zVsCEoD4lkchSanyESH7PcLN2GGOSF" />
 
+        <!--地图配置-->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="GjMRtLQZO31StG5rD01Gwhwz9vGjUX6w" />
+            android:value="mchVcVRPA5euADqaHataE0b7nAczo0SG" />
 
         <service
             android:name="com.baidu.location.f"

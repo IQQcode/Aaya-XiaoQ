@@ -13,11 +13,11 @@ object SpUtils {
 
     private const val SP_NAME = "config"
 
-    //对象
+    // 对象
     private lateinit var sp: SharedPreferences
     private lateinit var spEditor: SharedPreferences.Editor
 
-    //初始化
+    // 初始化
     fun initUtils(mContext: Context) {
         sp = mContext.getSharedPreferences(SP_NAME, Context.MODE_PRIVATE)
         spEditor = sp.edit()

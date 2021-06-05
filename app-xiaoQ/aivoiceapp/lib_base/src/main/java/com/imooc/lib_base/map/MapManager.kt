@@ -27,16 +27,16 @@ import com.imooc.lib_base.utils.L
 
 
 /**
- * FileName: MapManager
- * Founder: LiuGuiLin
- * Profile: 地图管理类
+ * @Author: iqqcode
+ * @Date: 2021-04-29
+ * @Description:地图管理类
  */
 object MapManager {
 
     const val TAG = "MapManager"
 
-    //最大缩放 4 - 21
-    const val MAX_ZOOM: Float = 17f
+    // 最大缩放 4 - 21
+    const val MAX_ZOOM: Float = 21f
 
     private var mMapView: MapView? = null
     private var mBaiduMap: BaiduMap? = null
@@ -76,7 +76,7 @@ object MapManager {
     private var endCity: String = ""
     private var endAddress: String = ""
 
-    //初始化
+    // 初始化
     fun initMap(mContext: Context) {
         this.mContext = mContext
 
@@ -96,15 +96,15 @@ object MapManager {
         this.mMapView = mMapView
         mBaiduMap = mMapView.map
 
-        //默认缩放
+        // 默认缩放
         zoomMap(MAX_ZOOM)
-        //默认卫星地图
-        //setMapType(1)
-        //默认打开交通图
-        //setTrafficEnabled(true)
-        //默认打开热力图
-        //setBaiduHeatMapEnabled(true)
-        //默认开启
+        // 默认卫星地图
+        // setMapType(1)
+        // 默认打开交通图
+        setTrafficEnabled(true)
+        // 默认打开热力图
+        // setBaiduHeatMapEnabled(true)
+        // 默认开启
         setMyLocationEnabled(true)
 
         //初始化步行监听器
@@ -114,20 +114,25 @@ object MapManager {
         initListener()
         //比例尺
         showScaleControl(true)
-
-
     }
 
     //==========================操作方法===========================
 
-    //缩放地图
+    /**
+     * 缩放地图
+     * @param value Float
+     */
     fun zoomMap(value: Float) {
         val builder = MapStatus.Builder()
         builder.zoom(value)
         mBaiduMap?.setMapStatus(MapStatusUpdateFactory.newMapStatus(builder.build()))
     }
 
-    //设置默认中心点
+    /**
+     * 设置默认中心点
+     * @param la Double
+     * @param lo Double
+     */
     fun setCenterMap(la: Double, lo: Double) {
         val latLng = LatLng(la, lo)
         mBaiduMap?.setMapStatus(MapStatusUpdateFactory.newLatLng(latLng))
@@ -145,7 +150,10 @@ object MapManager {
             if (index == 0) BaiduMap.MAP_TYPE_NORMAL else BaiduMap.MAP_TYPE_SATELLITE
     }
 
-    //设置实时路况开关
+    /**
+     * 设置实时路况开关
+     * @param isOpen Boolean
+     */
     fun setTrafficEnabled(isOpen: Boolean) {
         mBaiduMap?.isTrafficEnabled = isOpen
     }
@@ -155,12 +163,19 @@ object MapManager {
         mBaiduMap?.isBaiduHeatMapEnabled = isOpen
     }
 
-    //设置定位开关
+    /**
+     * 设置定位开关
+     * @param isOpen Boolean
+     */
     private fun setMyLocationEnabled(isOpen: Boolean) {
-        //mBaiduMap?.isMyLocationEnabled = isOpen
+        mBaiduMap?.isMyLocationEnabled = isOpen
     }
 
-    //定位开关
+    /**
+     * 定位开关
+     * @param isOpen Boolean
+     * @param mOnLocationResultListener OnLocationResultListener?
+     */
     fun setLocationSwitch(isOpen: Boolean, mOnLocationResultListener: OnLocationResultListener?) {
         if (isOpen) {
             this.mOnLocationResultListener = mOnLocationResultListener
@@ -183,19 +198,19 @@ object MapManager {
 
     //===========================定位===========================
 
-    //定位初始化
+    // 定位初始化
     private fun initLocation() {
         val option = LocationClientOption()
         option.isOpenGps = true
         option.setCoorType("bd09ll")
         option.setScanSpan(1000)
-        //高精度
+        // 高精度
         option.locationMode = LocationClientOption.LocationMode.Hight_Accuracy
-        //可选，设置是否需要地址信息，默认不需要
+        // 可选，设置是否需要地址信息，默认不需要
         option.setIsNeedAddress(true)
-        //可选，设置是否需要地址描述
+        // 可选，设置是否需要地址描述
         option.setIsNeedLocationDescribe(true)
-        //可选，设置是否需要设备方向结果
+        // 可选，设置是否需要设备方向结果
         option.setNeedDeviceDirect(true)
         option.isLocationNotify = true
         option.setIgnoreKillProcess(true)
@@ -207,9 +222,10 @@ object MapManager {
                     return
                 }
 
+                // 定位成功
                 if (location.locType == 61 || location.locType == 161) {
-                    //设置定位默认中心点
-                    //setCenterMap(location.latitude, location.longitude)
+                    // 设置定位默认中心点
+                    setCenterMap(location.latitude, location.longitude)
                     locationCity = location.city
                     mOnLocationResultListener?.result(
                         location.latitude,
@@ -223,7 +239,7 @@ object MapManager {
                     mOnLocationResultListener?.fail()
                 }
 
-                //停止定位
+                // 停止定位
                 setLocationSwitch(false, null)
             }
         })
@@ -487,7 +503,7 @@ object MapManager {
 
     //===========================事件交互===========================
 
-    //设置Logo显示的位置
+    // 设置Logo显示的位置
     fun setLogoPosition() {
         mMapView?.logoPosition = LogoPosition.logoPostionCenterTop
     }
@@ -543,7 +559,7 @@ object MapManager {
 
     //===========================地理编码===========================
 
-    //初始化地理编码
+    // 初始化地理编码
     private fun initCode() {
         mCoder = GeoCoder.newInstance()
         mCoder.setOnGetGeoCodeResultListener(object : OnGetGeoCoderResultListener {
